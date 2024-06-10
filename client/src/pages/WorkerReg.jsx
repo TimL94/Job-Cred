@@ -54,7 +54,7 @@ const RegistrationForm = () => {
     <Container
      sx={{ marginY: 12 }}
       component="main"
-      maxWidth="sm"
+      maxWidth="xs"
       align="center"
     >
       <Typography
