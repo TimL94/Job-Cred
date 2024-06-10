@@ -15,7 +15,7 @@ db.once('open', async () => {
 
     // asynchronusly seeds data for each model logging a message after each action to verify its completion
     await Worker.insertMany(workerData);
-    console.log('--Workerss seeded--')
+    console.log('--Workers seeded--')
     await Employer.insertMany(employerData);
     console.log('--Employers seeded--')
     await Job.insertMany(jobData);

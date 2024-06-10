@@ -107,7 +107,9 @@ function Navbar({ mode, toggleColorMode }) {
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="h5" color="text.primary">
-                   Job Cred
+                    <Link href='/' >
+                      Job Cred
+                    </Link>
                   </Typography>
                 </MenuItem>
               </Box>
@@ -222,11 +224,6 @@ function Navbar({ mode, toggleColorMode }) {
                   >
                     <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
                   </Box>
-                  <MenuItem onClick={() => scrollToSection('pricing')}>
-                    Available Jobs
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
-                  <Divider />
                   <Box sx={{ml: -2}}>
                   {Auth.loggedIn() ? 
                         Auth.userType() 
