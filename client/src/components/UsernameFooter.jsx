@@ -2,15 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {
   Box,
-  ToggleButton,
+  Button,
   ToggleButtonGroup } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import { GET_WORKER, GET_EMPLOYER } from '../utils/queries';
 import Auth from '../utils/auth';
 
 
-// name is decieving, populates the badge at the bottom with the username of the signed in user, if no user is signed in Job Cred is dosplayed
-function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
+// populates the badge at the bottom with the username of the signed in user, if no user is signed in Job Cred is dosplayed
+function usernameFooter({ showCustomTheme, toggleCustomTheme }) {
   let user = {};
  try{
   const userId = Auth.getProfile();
@@ -48,8 +48,6 @@ function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
       <ToggleButtonGroup
         color="primary"
         exclusive
-        value={showCustomTheme}
-        onChange={toggleCustomTheme}
         aria-label="Platform"
         sx={{
           backgroundColor: 'background.default',
@@ -58,17 +56,17 @@ function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
           },
         }}
       >
-        <ToggleButton value={true}>
+        <Button value={true} href={Auth.loggedIn() ? Auth.userType() ? "/portfolio" : "/empprofile" : "/"} variant='outlined'>
           {user.username ? userTypeString : "Job Cred"}
-        </ToggleButton>
+        </Button>
       </ToggleButtonGroup>
     </Box>
   );
 }
 
-ToggleCustomTheme.propTypes = {
+usernameFooter.propTypes = {
   showCustomTheme: PropTypes.bool.isRequired,
   toggleCustomTheme: PropTypes.func.isRequired,
 };
 
-export default ToggleCustomTheme;
+export default usernameFooter;

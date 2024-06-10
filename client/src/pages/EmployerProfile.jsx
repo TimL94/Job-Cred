@@ -9,7 +9,8 @@ import {
   Card,
   Avatar,
   Link,
-  Button
+  Button,
+  CardActions
 
 } from "@mui/material";
 import { useQuery, useMutation } from "@apollo/client";
@@ -49,7 +50,7 @@ const empProfile = () => {
   return (
     <>
       <Grid
-        sx={{ p: 10, mt: 4 }}
+        sx={{ p: 5, mt: 10 }}
         container
         direction="row"
         justifyContent="center"
@@ -80,38 +81,41 @@ const empProfile = () => {
             {populateJobs() ? 
               activeJobs.map((job) => { 
                 return(
-                  <Card sx={{ maxWidth: 345, m: 2 }} key={job._id}>
+                  <Card sx={{ maxWidth: "350px", minWidth: "350px" }} key={job._id}>
                     <CardActionArea>
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                           {job.name}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary"sx={{maxHeight:"70px", minHeight:'70px', overflow:'auto'}}>
                           {job.description}
                         </Typography>
-                        {job.worker ? 
-                          <Button
-                          type="submit"
-                          variant="outlined"
-                          color="error"
-                          size="large"
-                          onClick={() => completedJob(job._id)}
-                        >
-                          Mark Job Complete
-                        </Button> :
-                        <Button
-                        variant="outlined"
-                        color="error"
-                        size="medium"
-                        >
-                          No Worker
-                        </ Button>}
+                        
                       </CardContent>
                     </CardActionArea>
+                    <CardActions sx={{display:"flex", justifyContent:"center", alignItems:"flex-end"}}>
+                      {job.worker ? 
+                            <Button
+                            type="submit"
+                            variant="outlined"
+                            color="error"
+                            size="large"
+                            onClick={() => completedJob(job._id)}
+                          >
+                            Mark Job Complete
+                          </Button> :
+                          <Button
+                          variant="outlined"
+                          color="error"
+                          size="medium"
+                          >
+                            No Worker
+                          </ Button>}
+                    </CardActions>
                   </Card>
                 )
               }) : (
-                <Card sx={{ maxWidth: 345, m: 2 }}>
+                <Card sx={{ maxWidth: "350px", minWidth: "350px" , m: 2 }}>
                   <CardActionArea>
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">

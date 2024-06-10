@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx'
 import SignIn from './pages/SignIn.jsx'
-import Register from './pages/userReg.jsx'
-import Registration from './pages/employerReg.jsx'
+import Register from './pages/WorkerReg.jsx'
+import Registration from './pages/EmployerReg.jsx'
 import Home from './pages/Homepage'
 import CreateJob from './pages/CreateJobPage.jsx'
 import FindJob from './pages/FindJobs.jsx';
-import UserProfile from './pages/userProfile.jsx';
-import EmpProfile from './pages/empProfile.jsx';
+import UserProfile from './pages/WorkerProfile.jsx';
+import EmpProfile from './pages/EmployerProfile.jsx';
 import { createTheme } from '@mui/material';
 import './index.css'
 import Auth from '../src/utils/auth.js'

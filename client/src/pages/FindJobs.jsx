@@ -55,7 +55,7 @@ const FindJob = () => {
         <Grid container spacing={5} align="center" sx={{ mt: 5 }}>
           {availableJobs.map((job) => (
             <Grid item xs={12} sm={4} md={4} key={job._id}>
-              <Card variant="outlined" sx={{ maxWidth: 345, p: 2, mb: 4 }}>
+              <Card variant="outlined" sx={{ maxWidth: "350px", minWidth: "350px" , p: 2, mb: 4 }}>
                 <CardActionArea>
                   {/* Uncomment and use if there is an image URL in job.img */}
                   {/* <CardMedia
@@ -74,7 +74,7 @@ const FindJob = () => {
                     >
                       {job.name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.secondary" sx={{maxHeight:"70px", minHeight:'70px', overflow:'auto'}}>
                       {job.description}
                     </Typography>
                   </CardContent>

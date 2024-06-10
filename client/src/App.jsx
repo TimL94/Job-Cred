@@ -9,10 +9,10 @@ import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
 import { ThemeProvider, createTheme, Divider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
-import AppAppBar from './components/AppAppBar';
+import Navbar from './components/Navbar'
 import getLPTheme from './components/getLPTheme';
 import Footer from "./components/Footer";
-import ToggleCustomTheme from './components/toggleCustomTheme';
+import UsernameFooter from './components/UsernameFooter';
 import { Box } from "@mui/material";
 
 const httpLink = createHttpLink({
@@ -53,13 +53,13 @@ export default function App() {
       <div>
         <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
           <CssBaseline />
-          <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
+          <Navbar mode={mode} toggleColorMode={toggleColorMode} />
           <div>
             <Outlet />
           </div>
           <Divider />
           <Footer />
-          <ToggleCustomTheme
+          <UsernameFooter
             showCustomTheme={showCustomTheme}
             toggleCustomTheme={toggleCustomTheme}
           />

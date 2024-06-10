@@ -6,6 +6,7 @@ import {
   Paper,
   CardActionArea,
   CardContent,
+  CardActions,
   Card,
   Avatar,
   Rating,
@@ -71,7 +72,7 @@ const userProfile = () => {
   return (
     <>
       <Grid
-        sx={{ p: 10, mt: 4 }}
+        sx={{ p: 5, mt: 10 }}
         container
         direction="row"
         justifyContent="center"
@@ -117,13 +118,13 @@ const userProfile = () => {
             {populateCompleted() ? 
               completedJobs.map((job) => { 
                 return(
-                  <Card sx={{ maxWidth: 345, m: 1 }} key={job._id}>
+                  <Card sx={{  maxWidth: "250px", minWidth: "250px", m: 1 }} key={job._id}>
                     <CardActionArea>
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                           {job.name}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" sx={{maxHeight:"70px", minHeight:'70px', overflow:'auto'}}>
                           {job.description}
                         </Typography>
                       </CardContent>
@@ -131,16 +132,16 @@ const userProfile = () => {
                   </Card>
                 )
               }) : (
-                <Card sx={{ maxWidth: 345, m: 1}}>
+                <Card sx={{ maxWidth: "350px", minWidth: "350px" , m: 1}}>
                   <CardActionArea>
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                          OH NO! You don't appear to have any jobs...
+                          OH NO! You don't appear to have any completed jobs...
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                           
                           <Link color="#000" variant="h5" href="/findjobs" underline="hover">
-                            ---No Jobs completed yet, get to work!---
+                            ---get to work!---
                           </Link>
                         </Typography>
                       </CardContent>
@@ -166,30 +167,33 @@ const userProfile = () => {
             {populateJobs() ? 
               activeJobs.map((job) => { 
                 return(
-                  <Card sx={{ maxWidth: 345, m: 1 }} key={job._id}>
+                  <Card sx={{ maxWidth: "350px", minWidth: "350px" , m: 1 }} key={job._id}>
                     <CardActionArea>
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                           {job.name}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary"sx={{maxHeight:"70px", minHeight:'70px', overflow:'auto'}}>
                           {job.description}
                         </Typography>
-                        <Button
-                          type="submit"
-                          variant="outlined"
-                          color="error"
-                          size="large"
-                          onClick={() => removeJob(job._id)}
-                        >
-                          Quit Project
-                        </Button>
+                        
                       </CardContent>
                     </CardActionArea>
+                    <CardActions sx={{display:"flex", justifyContent:"center", alignItems:"flex-end"}}>
+                      <Button
+                            type="submit"
+                            variant="outlined"
+                            color="error"
+                            size="large"
+                            onClick={() => removeJob(job._id)}
+                          >
+                            Quit Project
+                          </Button>
+                    </CardActions>
                   </Card>
                 )
               }) : (
-                <Card sx={{ maxWidth: 345, m: 1}}>
+                <Card sx={{ maxWidth: "350px", minWidth: "350px" , m: 1}}>
                   <CardActionArea>
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">

@@ -1,5 +1,9 @@
 const { Schema, model } = require('mongoose');
 
+const validateNameLength = (value) =>{
+    return value.length<= 30;
+}
+
 // schema for making a job model
 const jobSchema = new Schema(
     {

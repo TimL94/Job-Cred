@@ -27,7 +27,7 @@ const logoStyle = {
 
 // creates the nav bar, dynamically changes the links based on if the user is logged in or not and only displays user-type specific content
 // when in mobile the navbar is condensed into a drawer component
-function AppAppBar({ mode, toggleColorMode }) {
+function Navbar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
@@ -100,13 +100,13 @@ function AppAppBar({ mode, toggleColorMode }) {
                   smallLogo
                 }
                 //style={logoStyle}
-                alt="logo of sitemark"
+                alt="logo of Job Cred"
               />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <MenuItem
                   sx={{ py: '6px', px: '12px' }}
                 >
-                  <Typography variant="body2" color="text.primary">
+                  <Typography variant="h5" color="text.primary">
                    Job Cred
                   </Typography>
                 </MenuItem>
@@ -139,7 +139,6 @@ function AppAppBar({ mode, toggleColorMode }) {
                     href='/portfolio'>
                       {"Portfolio"}
                   </Button>
-                : 
                   <Button 
                   underline='hover' 
                   color="inherit" 
@@ -318,9 +317,9 @@ function AppAppBar({ mode, toggleColorMode }) {
   );
 }
 
-AppAppBar.propTypes = {
+Navbar.propTypes = {
   mode: PropTypes.oneOf(['dark', 'light']).isRequired,
   toggleColorMode: PropTypes.func.isRequired,
 };
 
-export default AppAppBar;
+export default Navbar;
