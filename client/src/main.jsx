@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx'
 import SignIn from './pages/SignIn.jsx'
 import Register from './pages/WorkerReg.jsx'
-import Registration from './pages/EmployerReg.jsx'
+import Registration from './pages/employerReg.jsx'
 import Home from './pages/Homepage'
 import CreateJob from './pages/CreateJobPage.jsx'
 import FindJob from './pages/FindJobs.jsx';
