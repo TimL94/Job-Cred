@@ -14,7 +14,6 @@ import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
 import { ADD_JOB } from "../utils/mutations";
 
-
 // allows an employer to post jobs for workers to pick up
 const createJob = () => {
   const employerId = Auth.getProfile();
@@ -24,12 +23,22 @@ const createJob = () => {
     description: "",
     employer: "",
   });
+  const [nameError, setNameError] = useState("");
 
   const handleChange = (e) => {
-    setJob({
-      ...job,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    
+    // Check if the name field exceeds 40 characters
+    if (name === 'name' && value.length > 40) {
+      setNameError('Name cannot exceed 40 characters');
+    } else {
+      setNameError('');
+    }
+
+    setJob((prevJob) => ({
+      ...prevJob,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -64,7 +73,7 @@ const createJob = () => {
       <Typography
         sx={{
           mt: 3,
-          p: 3,
+          p: 1,
           boxShadow: "#013e87 0px 8px 24px",
           border: "#013e87 2px solid",
           bgcolor: "#013e87",
@@ -72,7 +81,7 @@ const createJob = () => {
         }}
         alignItems="center"
         component="h1"
-        variant="h5"
+        variant="contained"
       >
         Create a New Job
       </Typography>
@@ -91,6 +100,8 @@ const createJob = () => {
               autoFocus
               value={job.name}
               onChange={handleChange}
+              error={Boolean(nameError)}
+              helperText={nameError}
             />
           </Box>
           <Box sx={{ mt: 3 }}>
@@ -111,7 +122,7 @@ const createJob = () => {
             />
           </Box>
           <Button
-            sx={{ mt: 2, p: 5 }}
+            sx={{ mt: 2, p: 1 }}
             type="submit"
             fullWidth
             variant="contained"
@@ -128,3 +139,4 @@ const createJob = () => {
 };
 
 export default createJob;
+

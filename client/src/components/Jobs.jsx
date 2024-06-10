@@ -16,29 +16,33 @@ import { GET_JOBS } from '../utils/queries';
 export default function JobSearch() {
   const { loading, error, data } = useQuery(GET_JOBS);
   const jobData = data?.jobs || [];
+  let randomJobs = [];
+  const getRandomJobs = () => {
+    let arrayLength = jobData.length;
+    for (let i=0; i<=3; i++){
+      let index = Math.floor(Math.random() * arrayLength)
+      //console.log(jobData[index])
+      if(!randomJobs.includes(jobData[index])){
+        randomJobs.push(jobData[index])
+      }
+    }
+    return randomJobs;
+  }
+  console.log(getRandomJobs())
 
   const jobs = [
     {
-      title: jobData[0]?.name || 'Programmer',
-      starting_bid: 'ACTIVE JOB',
-      description: jobData[0]?.description || 'This is one test blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
-      buttonText: 'Apply',
-      buttonVariant: 'contained',
+      title: randomJobs[0]?.name || 'Programmer',
+      description: randomJobs[0]?.description || 'This is one test blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
     },
     {
-      title: jobData[1]?.name || 'IT Professional',
-      subheader: 'Recommended',
-      starting_bid: 'ACTIVE JOB',
-      description: jobData[1]?.description || 'This is one test blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
-      buttonText: 'Apply',
-      buttonVariant: 'contained',
+      title: randomJobs[1]?.name || 'IT Professional',
+      description: randomJobs[1]?.description || 'This is one test blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
     },
     {
-      title: jobData[2]?.name || 'Entrepreneur',
-      starting_bid: 'ACTIVE JOB',
-      description: jobData[2]?.description || 'This is one test blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
-      buttonText: 'Apply',
-      buttonVariant: 'contained',
+      title: randomJobs[2]?.name || 'Entrepreneur',
+      description: randomJobs[2]?.description || 'Looking for a dedicated and driven entrepreneur to help start a business',
+
     },
   ];
 
@@ -107,6 +111,10 @@ export default function JobSearch() {
                       justifyContent: 'space-between',
                       alignItems: 'center',
                       color: job.title === 'IT Professional' ? 'grey.100' : '',
+                      overflow:"auto",
+                      maxHeight:'40px',
+                      minHeight:'40px'
+
                     }}
                   >
                     <Typography component="h3" variant="h6">
@@ -149,7 +157,9 @@ export default function JobSearch() {
                       borderColor: 'grey.500',
                     }}
                   />
+                  <Typography sx={{maxHeight:"70px", minHeight:'70px', overflow:'auto'}}>
                   {job.description}
+                  </Typography>
                 </CardContent>
               </Card>
             </Grid>

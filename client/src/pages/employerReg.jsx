@@ -46,10 +46,10 @@ const EmployerRegistration = () => {
   };
 
   return (
-    <Container sx={{ mt: 14, p: 6 }} component="main" maxWidth="xs">
+    <Container sx={{ mt: 14, p: 1 }} component="main" maxWidth="xs">
       <Typography
         sx={{
-          p: 3,
+          p: 1,
           boxShadow: "#013e87 0px 8px 24px",
           border: "#013e87 2px solid",
           bgcolor: "#013e87",
@@ -112,7 +112,7 @@ const EmployerRegistration = () => {
       </form>
       <Paper
         align="center"
-        sx={{ mt: 5, bgcolor: "#f5f5f5", p: 3 }}
+        sx={{ mt: 5, mb: 3, bgcolor: "#f5f5f5", p: 1 }}
         elevation={20}
       >
         <Link color="#000" variant="h5" href="/register" underline="hover">

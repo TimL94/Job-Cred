@@ -59,11 +59,12 @@ const RegistrationForm = () => {
     >
       <Typography
         sx={{
-          p: 3,
+          p: 1,
           boxShadow: "#013e87 0px 8px 24px",
           border: "#013e87 2px solid",
           bgcolor: "#013e87",
           color: "#fff",
+          border: 'rounded'
         }}
         align="center"
         component="h1"
@@ -150,7 +151,7 @@ const RegistrationForm = () => {
       </form>
       <Paper
         align="center"
-        sx={{ mt: 5, bgcolor: "#f5f5f5", p: 3 }}
+        sx={{ mt: 5, bgcolor: "#f5f5f5", p: 1, border: "rounded" }}
         elevation={20}
       >
         <Link color="#000" variant="h5" href="/registration" underline="hover">
